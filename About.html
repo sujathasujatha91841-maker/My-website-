@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopPro - Premium E-commerce Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb; --primary-dark: #1e40af; --secondary: #f59e0b; --success: #10b981;
+            --danger: #ef4444; --dark: #1f2937; --gray-900: #111827; --gray-800: #1f2937;
+            --gray-700: #374151; --gray-600: #4b5563; --gray-500: #6b7280; --gray-400: #9ca3af;
+            --gray-300: #d1d5db; --gray-200: #e5e7eb; --gray-100: #f3f4f6; --white: #ffffff;
+            --shadow: 0 10px 25px rgba(0,0,0,0.1); --shadow-lg: 0 25px 50px rgba(0,0,0,0.15);
+            --radius: 12px; --radius-lg: 20px;
+        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Inter',sans-serif;line-height:1.6;color:var(--gray-800);background:var(--gray-100);}
+        .container{max-width:1200px;margin:0 auto;padding:0 1.5rem;}
+        .header{background:var(--white);box-shadow:var(--shadow);position:sticky;top:0;z-index:1000;}
+        .nav-container{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;}
+        .logo{font-size:1.75rem;font-weight:800;color:var(--primary);text-decoration:none;}
+        .nav-menu{display:flex;list-style:none;gap:2rem;}
+        .nav-link{text-decoration:none;color:var(--gray-700);font-weight:500;transition:all 0.3s;}
+        .nav-link:hover,.nav-link.active{color:var(--primary);}
+        .header-actions{display:flex;gap:1rem;align-items:center;}
+        .btn{padding:.75rem 1.5rem;border:none;border-radius:var(--radius);font-weight:600;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;}
+        .btn-primary{background:var(--primary);color:white;}
+        .btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px);}
+        .icon-btn{width:44px;height:44px;border-radius:50%;background:var(--gray-100);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;}
+        .icon-btn:hover{background:var(--gray-200);color:var(--primary);}
+        .cart-count{position:absolute;top:-4px;right:-4px;background:var(--danger);color:white;border-radius:50%;min-width:20px;height:20px;font-size:.75rem;display:flex;align-items:center;justify-content:center;}
+        .hero{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;padding:6rem 0;position:relative;}
+        .hero-content{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+        .hero h1{font-size:3rem;font-weight:800;line-height:1.1;margin-bottom:1.5rem;}
+        .hero-stats{display:flex;gap:3rem;margin-top:2rem;}
+        .stat-number{font-size:2rem;font-weight:800;display:block;}
+        .section{padding:5rem 0;}
+        .section-title{text-align:center;font-size:2.5rem;font-weight:800;margin-bottom:1rem;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;}
+        .product-card{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);transition:all .4s;}
+        .product-card:hover{transform:translateY(-12px);box-shadow:var(--shadow-lg);}
+        .product-image{height:280px;background:linear-gradient(135deg,var(--gray-100),var(--gray-200));display:flex;align-items:center;justify-content:center;font-size:4rem;}
+        .product-info{padding:1.75rem;}
+        .product-title{font-size:1.25rem;font-weight:700;margin-bottom:.5rem;}
+        .product-price{font-size:1.75rem;font-weight:800;color:var(--primary);margin-bottom:1rem;}
+        .rating-stars{color:var(--secondary);font-size:1.1rem;}
+        @media (max-width:768px){.hero-content{grid-template-columns:1fr;text-align:center;gap:2rem;}.products-grid{grid-template-columns:1fr;}.nav-menu{display:none;}}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container container">
+            <a href="index.html" class="logo">Shop<span style="color:var(--secondary);">Pro</span></a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="#products" class="nav-link">Products</a></li>
+                <li><a href="search.html" class="nav-link">Search</a></li>
+                <li><a href="account.html" class="nav-link">Account</a></li>
+            </ul>
+            <div class="header-actions">
+                <a href="login.html" class="btn btn-primary">Login</a>
+                <div class="icon-btn relative" style="position:relative;" id="cartBtn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">3</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <h1>Premium Quality<br>Products Delivered</h1>
+                    <p>Discover our carefully curated collection of high-quality products with fast delivery.</p>
+                    <div class="hero-stats">
+                        <div class="stat"><span class="stat-number">50K+</span><span>Customers</span></div>
+                        <div class="stat"><span class="stat-number">1M+</span><span>Orders</span></div>
+                        <div class="stat"><span class="stat-number">99%</span><span>Satisfaction</span></div>
+                    </div>
+                </div>
+                <div style="font-size:8rem;opacity:0.1;">🛍️</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="products">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">🎧</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Wireless Headphones</h3>
+                        <div class="product-price">$129.99</div>
+                        <div class="rating-stars">⭐⭐⭐⭐⭐ (1,247)</div>
+                        <button class="btn btn-primary" style="width:100%;">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">⌚</div>
+                    <div class="
